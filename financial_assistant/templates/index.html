@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWise - Your AI Financial Assistant</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>FinWise</h1>
+                <p>Your AI Financial Assistant</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Financial Guidance, Simplified</h1>
+                <p>Ask questions, get insights, and make informed investment decisions with our AI-powered financial assistant.</p>
+                <a href="#chat-container" class="btn primary">Start Chatting</a>
+                <a href="#learn-more" class="btn secondary">Learn More</a>
+            </div>
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='img/financial-illustration.svg') }}" alt="Financial Guidance">
+            </div>
+        </div>
+    </section>
+
+    <section id="chat-container" class="chat-section">
+        <div class="container">
+            <h2>Chat with FinWise</h2>
+            <p class="subtitle">Ask anything about investing, financial planning, or the Indian markets</p>
+            
+            <div class="chat-box">
+                <div id="chat-messages">
+                    <div class="message bot">
+                        <div class="message-content">
+                            <p>Hi, I'm FinWise, your financial assistant. How can I help you today?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="user-message" placeholder="Ask me about investing, financial planning, market trends...">
+                    <button id="send-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div id="loading" class="loading-spinner" style="display: none;">⏳ Thinking...</div>
+            </div>
+            
+            <div class="sample-questions">
+                <h3>Not sure what to ask? Try these:</h3>
+                <div class="question-buttons">
+                    <button class="question-btn" data-question="What is the difference between mutual funds and stocks?">Mutual Funds vs Stocks</button>
+                    <button class="question-btn" data-question="How should I start investing with ₹10,000?">Start with ₹10,000</button>
+                    <button class="question-btn" data-question="What are the tax benefits of different investment options?">Tax Benefits</button>
+                    <button class="question-btn" data-question="How do I create an emergency fund?">Emergency Fund</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
