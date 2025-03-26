@@ -55,45 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         messageElement.innerHTML = `<div class="message-content"><strong>${sender}:</strong> ${message}</div>`;
         chatMessages.appendChild(messageElement);
         chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
-    //added code from here
-      
-        function sendMessage() {
-            const inputField = document.getElementById("user-input");
-            const chatBox = document.getElementById("chat-box");
-            const userMessage = inputField.value;
-            
-            if (userMessage.trim() === "") return;
-            
-            const userDiv = document.createElement("div");
-            userDiv.textContent = "You: " + userMessage;
-            chatBox.appendChild(userDiv);
-            inputField.value = "";
-            
-            fetch("https://your-backend-api.com/chat", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: userMessage })
-            })
-            .then(response => response.json())
-            .then(data => {
-                const botDiv = document.createElement("div");
-                botDiv.textContent = "Bot: " + data.reply;
-                chatBox.appendChild(botDiv);
-                chatBox.scrollTop = chatBox.scrollHeight;
-            })
-            .catch(error => console.error("Error:", error));
-        }
-
-        function checkAnswer(selected) {
-            const feedback = document.getElementById("quiz-feedback");
-            if (selected === 'a') {
-                feedback.textContent = "Correct! A budget helps track expenses and manage finances effectively.";
-                feedback.style.color = "green";
-            } else {
-                feedback.textContent = "Incorrect. The correct answer is A. A budget helps track expenses.";
-                feedback.style.color = "red";
-            }
-        }
+    
   
     }
 });
