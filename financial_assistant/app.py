@@ -93,9 +93,5 @@ def search_investments():
 
 if __name__ == '__main__':
     app.run(debug=os.getenv("FLASK_ENV") == "development")
-# added code from here
-@app.route('/quiz')
-def quiz():
-    """Render the financial quiz page"""
-    return render_template('quiz.html')
+
 
