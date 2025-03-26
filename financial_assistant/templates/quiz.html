@@ -4,59 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Chatbot & Financial Quiz</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .chat-container {
-            width: 300px;
-            height: 400px;
-            border: 1px solid #ccc;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .chat-box {
-            flex-grow: 1;
-            padding: 10px;
-            overflow-y: auto;
-            border-bottom: 1px solid #ccc;
-        }
-        .chat-input {
-            display: flex;
-            padding: 10px;
-        }
-        .chat-input input {
-            flex-grow: 1;
-            padding: 5px;
-        }
-        .chat-input button {
-            padding: 5px 10px;
-        }
-        .quiz-container {
-            margin-top: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            max-width: 400px;
-        }
-        .quiz-question {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        .quiz-options button {
-            display: block;
-            margin: 5px 0;
-            padding: 5px;
-            width: 100%;
-        }
-    </style>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
@@ -79,46 +26,10 @@
         </div>
         <p id="quiz-feedback"></p>
     </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
-    <script>
-        function sendMessage() {
-            const inputField = document.getElementById("user-input");
-            const chatBox = document.getElementById("chat-box");
-            const userMessage = inputField.value;
-            
-            if (userMessage.trim() === "") return;
-            
-            const userDiv = document.createElement("div");
-            userDiv.textContent = "You: " + userMessage;
-            chatBox.appendChild(userDiv);
-            inputField.value = "";
-            
-            fetch("https://your-backend-api.com/chat", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: userMessage })
-            })
-            .then(response => response.json())
-            .then(data => {
-                const botDiv = document.createElement("div");
-                botDiv.textContent = "Bot: " + data.reply;
-                chatBox.appendChild(botDiv);
-                chatBox.scrollTop = chatBox.scrollHeight;
-            })
-            .catch(error => console.error("Error:", error));
-        }
 
-        function checkAnswer(selected) {
-            const feedback = document.getElementById("quiz-feedback");
-            if (selected === 'a') {
-                feedback.textContent = "Correct! A budget helps track expenses and manage finances effectively.";
-                feedback.style.color = "green";
-            } else {
-                feedback.textContent = "Incorrect. The correct answer is A. A budget helps track expenses.";
-                feedback.style.color = "red";
-            }
-        }
-    </script>
+    
 </body>
 </html>
 
